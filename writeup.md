@@ -2,6 +2,8 @@
 
 Repo: [KentoNishi/cs178-ps0b](https://github.com/KentoNishi/cs178-ps0b)
 
+Paths: [`./svelte` (Svelte demo app)](https://github.com/KentoNishi/cs178-ps0b/tree/master/svelte), [`./flask` (Flask demo app)](https://github.com/KentoNishi/cs178-ps0b/tree/master/flask)
+
 ## Some Concepts in Svelte
 
 ### Components
