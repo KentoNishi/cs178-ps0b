@@ -14,16 +14,12 @@ Components are the building blocks of Svelte apps--they are reusabe, self-contai
 </script>
 
 <Rectangle {color} />
-<Button color={Color.red} on:click={() => {
-  color = Color.red;
-}}>
+<button on:click={() => (color = Color.red)}>
   Set to Red
-</Button>
-<Button color={Color.blue} on:click={() => {
-  color = Color.blue;
-}}>
+</button>
+<button on:click={() => (color = Color.blue)}>
   Set to Blue
-</Button>
+</button>
 ```
 ##### `ColoredRectangle.svelte`:
 ```html
@@ -47,6 +43,7 @@ Components are the building blocks of Svelte apps--they are reusabe, self-contai
   }
 </style>
 ```
+
 
 ### Reactivity & Binding
 Svelte is a reactive framework, which means the UI is automatically updated when the underlying data in variables changes. 
