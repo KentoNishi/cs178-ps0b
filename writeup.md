@@ -184,3 +184,22 @@ def index():
     {% endfor %}
 ...
 ```
+
+## Debugging
+
+### Svelte
+I am a DIEHARD Svelte enthusiast. I used Vue until about 4 years ago, when I discovered Svelte. I have been using Svelte for all of my personal projects ever since, and some of my apps have become somewhat popular. For example, my Chrome extensions built with Svelte have tens of thousands of weekly users ([link](https://github.com/LiveTL/LiveTL)), and it even received a [MadeWithSvelte entry](https://madewithsvelte.com/livetl). Some of my commissioned Svelte websites have also been viewed millions of times.
+
+When running my Svelte application, I set up a SvelteKit project with the `npm create svelte@latest .` command. However, during the setup process, I mistakenly opted into the Svelte 5 beta compiler. This led to dev mode being completely broken, and I was unable to run the application. I spent some time checking the debug logs, and found a warning from Vite about the Svelte compiler version. After I realized my mistake, I re-ran the command to reinitialize the project with the compiler version downgraded to `4.2.7`, and the application ran as expected. 
+
+### Flask
+I have also used Flask fairly extensively in the past, but most of my use came from serving either REST APIs or static assets. I was not aware that Flask had a templating engine, so I learned a lot about it as I went through the tutorial.
+
+When I was initially following the tutorial linked for the Flask todo app in the assignment description ([link](LINK)), I had an error like the following:
+```
+RuntimeError: Working outside of application context.
+```
+
+To fix the issue, I navigated to Google and found the appropriate Flask documentation page describing the [Application Context](https://flask.palletsprojects.com/en/3.0.x/appcontext/#manually-push-a-context). From here, I learned that the app's context must be pushed before using the database. To fix the issue, I simply added this line with the `with` statement within my `if __name__ == '__main__'` block, and the code ran as expected.
+
+Afterwards, I wanted to write my own ultra-simple todo app to get a better understanding of Jinja templates. To do so, I completely got rid of the database and just used a list of dictionaries to store the todo items. I also wrote my own routes to support adding, checking off, and removing todo items. 
