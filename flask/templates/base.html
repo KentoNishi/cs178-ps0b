@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple ToDo App</title>
+</head>
+
+<body>
+    <form method="POST" action="/add">
+        <input type="text" name="todo_item" placeholder="Task name" />
+        <input type="submit" value="Add" />
+    </form>
+    {% for item in todos %}
+        <div class="item">
+            <a href="{{ url_for('complete_todo', index=loop.index0) }}" style="height: 2rem;">
+                <input type="checkbox" name="completed" value="completed" {{ 'checked' if item.completed else '' }} />
+            </a>
+            <span style="{{ 'text-decoration: line-through;' if item.completed else '' }}">
+                {{ item.task }}
+            </span>
+            <a href="{{ url_for('remove_todo', index=loop.index0) }}" style="font-size: 1.5rem;">
+                ❌
+            </a>
+        </div>
+    {% endfor %}
+</body>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+    * {
+        font-size: 2rem;
+        transition: all 0.1s;
+    }
+    input, button {
+        border: none;
+        border-radius: 10px;
+        background-color: #ddd;
+        padding: 10px;
+    }
+    button:hover, input:hover {
+        filter: brightness(0.8);
+    }
+    input[type="checkbox"] {
+        width: 2rem;
+        height: 2rem;
+        margin: 0px;
+        pointer-events: none;
+        touch-action: none;
+    }
+    .item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+</style>
+
+</html>
