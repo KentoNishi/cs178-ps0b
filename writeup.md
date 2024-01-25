@@ -1,3 +1,7 @@
+# Pset 0b
+
+Repo: [KentoNishi/cs178-ps0b](https://github.com/KentoNishi/cs178-ps0b)
+
 ## Some Concepts in Svelte
 
 ### Components
@@ -195,11 +199,27 @@ When running my Svelte application, I set up a SvelteKit project with the `npm c
 ### Flask
 I have also used Flask fairly extensively in the past, but most of my use came from serving either REST APIs or static assets. I was not aware that Flask had a templating engine, so I learned a lot about it as I went through the tutorial.
 
-When I was initially following the tutorial linked for the Flask todo app in the assignment description ([link](LINK)), I had an error like the following:
+When I was initially following the tutorial linked for the Flask todo app in the assignment description ([link](https://www.python-engineer.com/posts/flask-todo-app/)), I had an error like the following:
 ```
 RuntimeError: Working outside of application context.
 ```
 
 To fix the issue, I navigated to Google and found the appropriate Flask documentation page describing the [Application Context](https://flask.palletsprojects.com/en/3.0.x/appcontext/#manually-push-a-context). From here, I learned that the app's context must be pushed before using the database. To fix the issue, I simply added this line with the `with` statement within my `if __name__ == '__main__'` block, and the code ran as expected.
 
-Afterwards, I wanted to write my own ultra-simple todo app to get a better understanding of Jinja templates. To do so, I completely got rid of the database and just used a list of dictionaries to store the todo items. I also wrote my own routes to support adding, checking off, and removing todo items. 
+Afterwards, I wanted to write my own ultra-simple todo app to get a better understanding of Jinja templates. To do so, I completely got rid of the database and just used a list of dictionaries to store the todo items. I also wrote my own routes to support adding, checking off, and removing todo items.
+
+## Reflection
+### Usability
+Given my background with Svelte, I instantly found Svelte to be the more usable framework. I almost think in Svelte naturally, so I was more focused on writing a demo application which showcases some of the core concepts of Svelte. I think Svelte's usability stems from how little it deviates from traditional HTML and JS. In other frameworks such as React, one must use JSX, which is a completely different syntax from HTML. In Svelte, the syntax is almost identical to HTML, with the addition of some logic blocks and reactive variables. I think this makes Svelte much more approachable, as well as easier to write and read.
+
+One way in which Svelte is less usable than Flask is the setup process. For Flask, one only needs to know the basics of Python to create a simple `app.py` file. Meanwhile, to initialize a Svelte application, one must first install Node.js, then learn about SvelteKit/Vite, run the `npm create svelte@latest .` command, and fully understand the structure of a Svelte project. I would not consider this a huge issue since developers who use Svelte in practice are likely familiar with these tools already, but it is definitely a barrier to entry for new developers who have never used Node.js or Svelte before.
+
+Like Svelte, Flask also has a solid templating engine. However, I found the templating engine to be less usable than Svelte's due to the lack of reactivity and the somewhat confusing syntax. Jinja's syntax requires an odd usage of quotes and curly braces, and worst of all, it requires a full page refresh to update the content. In Svelte, the content is automatically updated when the underlying data changes, which is much more usable.
+
+Beyond the barriers to entry, Flask also benefits from being a fully backend framework unlike Svelte, which is typically used for frontend development (ignoring the intricacies of SSR in SvelteKit). This means that Flask can be used to create a full application, while Svelte would require communication with a separate backend server. This is not a huge issue for seasoned developers, but it does make Flask more usable for quick prototyping, especially for new users.
+
+### Similarities/Differences
+Svelte and Flask are similar in that they are both frameworks which are used to build web applications. Additionally, they both support templating, which is critical for building dynamic web applications. However, they differ in that Svelte is primarily a frontend framework, while Flask is a backend framework. In practice, this means Svelte can be compiled to completely static assets, while Flask would require a backend server to serve the application. Another major difference is that Flask does not support modern UI framework features such as components or declarative reactivity in the frontend, while Svelte lives and breathes these features. This makes Svelte much more usable for frontend development, while Flask is arguably more usable for backend development.
+
+### Future Usage
+Personally, I will continue to embody Svelte for my projects for the foreseeable future. My favorite way to use Svelte is to compile down my Svelte code to static HTML, JS, and CSS assets; this enables interesting use cases such as Chrome extensions, which disallow the use of dynamic backends. This type of usage pattern is completely impossible with Flask, since it requires a server to run the backend at all times. Additionally, Svelte's reactivity features are much more robust for developing modern web apps with complex states. I absolutely love Rich Harris's vision for Svelte and the Svelte community, and so long as Svelte continues to maintain its superior usability and performance over other frameworks, I will continue to use it for my projects.
