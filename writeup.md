@@ -194,7 +194,7 @@ def index():
 ## Debugging
 
 ### Svelte
-I am a DIEHARD Svelte enthusiast. I used Vue until about 4 years ago, when I discovered Svelte. I have been using Svelte for all of my personal projects ever since, and some of my apps have become somewhat popular. For example, my Chrome extensions built with Svelte have tens of thousands of weekly users ([link](https://github.com/LiveTL/LiveTL)), and it even received a [MadeWithSvelte entry](https://madewithsvelte.com/livetl). Some of my commissioned Svelte websites have also been viewed millions of times.
+I am a DIEHARD Svelte enthusiast. I used Vue until about 4 years ago, when I discovered Svelte. I have been using Svelte for all of my personal projects ever since, and some of my apps have become somewhat popular. For example, my Chrome extensions built with Svelte have tens of thousands of weekly users ([link](https://github.com/LiveTL/LiveTL)), and one even received a [MadeWithSvelte entry](https://madewithsvelte.com/livetl). Some of my commissioned Svelte websites have also been viewed millions of times.
 
 When running my Svelte application, I set up a SvelteKit project with the `npm create svelte@latest .` command. However, during the setup process, I mistakenly opted into the Svelte 5 beta compiler. This led to dev mode being completely broken, and I was unable to run the application. I spent some time checking the debug logs, and found a warning from Vite about the Svelte compiler version. After I realized my mistake, I re-ran the command to reinitialize the project with the compiler version downgraded to `4.2.7`, and the application ran as expected. 
 
