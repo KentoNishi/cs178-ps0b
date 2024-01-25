@@ -116,3 +116,71 @@ Svelte provides component lifecycle hooks which can be used to run code at speci
 ...
 ```
 
+## Some Concepts in Flask
+
+### App Object
+The `Flask` class is the main object of a Flask application. Once instantiated to a variable typically named `app`, the object can be used to register routes and run the application.
+
+#### Example
+##### `app.py`:
+```py
+from flask import Flask
+app = Flask(__name__)
+
+...
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+### Routes
+Routes are the URLs which the application responds to. They are registered to the `app` object using the `@app.route` decorator. The decorator takes a URL path and an optional list of HTTP methods (if empty, it defaults to GET). The function under the decorator is called when the route is requested. The route URL can also contain variable parts, which are passed to the function as arguments.
+
+#### Example
+##### `app.py`:
+```py
+...
+@app.route('/add', methods=['POST'])
+def add_todo():
+    ...
+
+@app.route('/remove/<int:index>')
+def remove_todo(index):
+    ...
+```
+
+### Request Object
+The `request` object contains information about the request sent to the server. The object provides access to the request method, headers, body, query string, and form data. The object is often used to access the form data sent from a POST request.
+
+#### Example
+##### `app.py`:
+```py
+...
+def add_todo():
+    todo_item = request.form.get('todo_item')
+    if todo_item:
+        todos.append({'task': todo_item, 'completed': False})
+    ...
+```
+
+### HTML Templates
+Flask uses the Jinja templating engine to render dynamic/conditional content, with somewhat similar syntax to Svelte. Templates are stored in the `templates` directory and are rendered with the `render_template` function. Templates can use variables within double brackets (`{{}}`), and values for the variables can be passed as keyword arguments to `render_template`. Note that the content is not automatically reactive, and requires a page refresh to update (or a `redirect` call).
+
+#### Example
+##### `app.py`:
+```py
+...
+@app.route('/')
+def index():
+    return render_template('base.html', todos=todos)
+...
+```
+
+##### `base.html`:
+```html
+...
+    {% for item in todos %}
+      <span>{{ item.task }}</span>
+    {% endfor %}
+...
+```

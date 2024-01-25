@@ -14,10 +14,10 @@ def index():
 # concept: routes with form parameters through POST.
 @app.route('/add', methods=['POST'])
 def add_todo():
+    # concept: request object. this object contains form data.
     todo_item = request.form.get('todo_item')
     if todo_item:
         todos.append({'task': todo_item, 'completed': False})
-    # concept: redirects. this refreshes the data displayed on the page by redirecting to the index route.
     return redirect(url_for('index'))
 
 # concept: routes with parameters through GET (with variables in the url path).
